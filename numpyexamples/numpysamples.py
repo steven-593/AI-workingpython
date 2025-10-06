@@ -100,3 +100,54 @@ print("\nMáscara booleana:\n", mask)
 # 3. Aplicar la máscara para obtener los valores filtrados
 filtrados = arr[mask]
 print("\nValores filtrados (entre 40 y 60):\n", filtrados)
+
+
+print('--------------------------------------------------------------------------------------------------')
+
+x=np.array([[1,2],[3,4]])
+y=np.array([[10,23],[20,40]])
+print(x)
+print(y)
+print(x.shape)
+print(y.shape)
+
+print(x+y)
+print(np.add(x,y))
+
+
+
+print(x*y)
+
+
+print(np.dot(x,y))
+
+h = np.random.randint(11, 100,(3,4))
+print(h)
+
+print(np.sum(h,axis=0))
+
+print(np.sum(h,axis=1))
+
+print(np.sum(g))
+
+print('----------------------------------------------------------------------------------------')
+x=np.array([[1,2],[3,4]])
+y=np.array([[10,23],[20,40]])
+
+print(x)
+print(x.T)
+
+print('----------------------------------------------------------------------------------------')
+horizantal= np.concatenate((x,y), axis=1)
+print('Concatenacion Horizontal:')
+print(horizantal)
+print(horizantal.shape)
+print('----------------------------------------------------------------------------------------')
+Vertical= np.concatenate((x,y), axis=0)
+print('Concatenacion Horizontal:')
+print(Vertical)
+print(Vertical.shape)
+
+print('----------------------------------------------------------------------------------------')
+c=np.concatenate((x,y),axis=0)
+print(c.shape)
