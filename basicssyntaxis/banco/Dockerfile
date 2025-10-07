@@ -1,15 +1,15 @@
-# Imagen base con Python
+# Usar Python 3.10 slim
 FROM python:3.10-slim
 
-# Establece el directorio de trabajo dentro del contenedor
+# Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos del proyecto al contenedor
-COPY banco.py /app/
+# Copiar el proyecto completo
+COPY . .
 
-# (Opcional) Si tienes dependencias, descomenta estas líneas:
-# COPY requirements.txt /app/
-# RUN pip install --no-cache-dir -r requirements.txt
+# Instalar dependencias si tienes requirements.txt
+RUN if [ -f requirements.txt ]; then pip install --no-cache-dir -r requirements.txt; fi
 
-# Comando por defecto al ejecutar el contenedor
+# Comando por defecto para ejecutar tu script
 CMD ["python", "banco.py"]
+
