@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación Interactiva Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h1>💫 Bienvenido a tu App Flask</h1>
+
+        <p>Escribe tu nombre y presiona el botón:</p>
+        <input type="text" id="nombre" placeholder="Tu nombre">
+        <button onclick="enviarNombre()">Enviar</button>
+        <p id="respuesta"></p>
+
+        <hr style="margin: 25px 0; border: 1px solid rgba(255,255,255,0.2);">
+
+        <a href="/usuarios">
+            <button>👥 Ver Usuarios</button>
+        </a>
+    </div>
+
+    <script>
+        async function enviarNombre() {
+            const nombre = document.getElementById("nombre").value;
+            const respuesta = document.getElementById("respuesta");
+
+            if (!nombre) {
+                respuesta.textContent = "⚠️ Por favor, ingresa un nombre.";
+                return;
+            }
+
+            const res = await fetch(`/saludo/${nombre}`);
+            const data = await res.json();
+            respuesta.textContent = data.mensaje;
+        }
+    </script>
+</body>
+</html>

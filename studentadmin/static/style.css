@@ -1,0 +1,42 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    border-bottom: 3px solid #0d6efd;
+}
+
+.card {
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.btn {
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.03);
+}
+
+form input, form select {
+    border-radius: 10px !important;
+    padding: 10px;
+    font-size: 0.95rem;
+}
+
+footer {
+    background: #fff;
+    box-shadow: 0 -1px 8px rgba(0,0,0,0.05);
+}

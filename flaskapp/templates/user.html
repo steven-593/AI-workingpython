@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card">
+        <h1>👥 Lista de Usuarios</h1>
+        <ul>
+            {% for nombre, edad in usuarios.items() %}
+                <li>{{ nombre }} tiene {{ edad }} años</li>
+            {% endfor %}
+        </ul>
+        <a href="/">
+            <button>🏠 Volver al Inicio</button>
+        </a>
+    </div>
+</body>
+</html>

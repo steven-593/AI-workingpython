@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor de Estudiantes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap + FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Estilo propio -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <i class="fa-solid fa-graduation-cap me-2"></i>Gestor Estudiantil
+            </a>
+            <div>
+                <!-- Ruta a la lista de estudiantes -->
+                <a href="{{ url_for('home') }}" class="btn btn-light btn-sm me-2">
+                    <i class="fa-solid fa-list"></i> Lista
+                </a>
+                <!-- Ruta para crear un nuevo estudiante -->
+                <a href="{{ url_for('create_user') }}" class="btn btn-success btn-sm">
+                    <i class="fa-solid fa-user-plus"></i> Agregar
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Contenido principal -->
+    <main class="container py-4">
+        {% block content %}{% endblock %}
+    </main>
+    <!-- Footer -->
+    <footer class="text-center text-muted py-3">
+        <small>© 2025 Sistema de Gestión de Estudiantes | Flask + Bootstrap</small>
+    </footer>
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Alertas Flash -->
+    <script>
+        const messages = {{ get_flashed_messages(with_categories=true) | tojson | safe }};
+        if (messages && messages.length > 0) {
+            messages.forEach(function(item) {
+                const category = item[0];
+                const message = item[1];
+                let icon = 'info';
+                if (category === 'success') icon = 'success';
+                else if (category === 'error') icon = 'error';
+                else if (category === 'warning') icon = 'warning';
+
+                Swal.fire({
+                    icon: icon,
+                    title: message,
+                    showConfirmButton: false,
+                    timer: 1800
+                });
+            });
+        }
+    </script>
+</body>
+</html>
