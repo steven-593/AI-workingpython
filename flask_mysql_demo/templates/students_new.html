@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="{{ url_for('create_student') }}" method="post">
+  <p><label>Name<br><input name="name" required></label></p>
+  <p><label>Career<br><input name="career" required></label></p>
+  <p><label>Email<br><input name="email" type="email" required></label></p>
+  <p><button type="submit">Save</button></p>
+</form>
+{% endblock %}

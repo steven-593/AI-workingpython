@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regresión Lineal - Helados</title>
+</head>
+<body>
+    <h2>Regresión Lineal - Ventas de Helados</h2>
+
+    {% if error %}
+        <p style="color:red;"><b>{{ error }}</b></p>
+    {% endif %}
+
+    <form method="POST">
+        <label>Temperaturas (separadas por coma):</label><br>
+        <input type="text" name="temperaturas" placeholder="20,25,30,35,40" required><br><br>
+
+        <label>Ventas (separadas por coma):</label><br>
+        <input type="text" name="ventas" placeholder="50,55,65,70,80" required><br><br>
+
+        <button type="submit">Generar Gráfico</button>
+    </form>
+
+    <hr>
+
+    {% if m is not none %}
+        <p><b>Pendiente (m):</b> {{ m }}</p>
+        <p><b>Intercepto (b):</b> {{ b }}</p>
+    {% endif %}
+
+    {% if grafico %}
+        <h3>Gráfico generado:</h3>
+        <img src="/static/{{ grafico }}" width="500">
+    {% endif %}
+</body>
+</html>

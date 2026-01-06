@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Student Registry</title>
+  <style>
+    body { font-family: system-ui, Arial; margin: 24px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom: 16px; }
+    .flash { background:#eef; padding:8px; margin-bottom: 12px; border: 1px solid #ccd; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h2>Student Registry</h2>
+    <nav>
+      <a href="{{ url_for('list_students') }}">List</a> |
+      <a href="{{ url_for('new_student') }}">Add</a>
+    </nav>
+  </div>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flash">
+        {% for m in messages %}<div>{{ m }}</div>{% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</body>
+</html>

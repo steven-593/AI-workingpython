@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  server:
+    container_name: calc_server
+    build: ./server
+    ports:
+      - "5000:5000"
+    networks:
+      - calcnet
+
+  client:
+    container_name: calc_client
+    build: ./client
+    depends_on:
+      - server
+    environment:
+      # Windows: X11 via host.docker.internal
+      - DISPLAY=${DISPLAY}
+    volumes:
+      # Ubuntu: compartir socket X11
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+    # Linux y Windows soportados
+    stdin_open: true
+    tty: true
+    networks:
+      - calcnet
+
+networks:
+  calcnet:
+    driver: bridge

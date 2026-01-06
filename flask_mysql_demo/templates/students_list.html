@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<table>
+  <thead>
+    <tr><th>ID</th><th>Name</th><th>Career</th><th>Email</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    {% for s in students %}
+    <tr>
+      <td>{{ s.id }}</td>
+      <td>{{ s.name }}</td>
+      <td>{{ s.career }}</td>
+      <td>{{ s.email }}</td>
+      <td>
+        <form action="{{ url_for('delete_student', sid=s.id) }}" method="post" style="display:inline">
+          <button type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5">No students yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
